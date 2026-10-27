@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woordenwolk: Conferentietermen HiH 50 Jaar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hih: {
+                            green: '#1E5939',
+                            orange: '#E35220',
+                            sand: '#F5F2EB',
+                            dark: '#2C3531',
+                            gray: '#555F5A'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .cloud-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1.2rem 2rem;
+            padding: 4rem 3rem;
+            background-color: #F5F2EB;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+        }
+        .cloud-word {
+            line-height: 1.1;
+            transition: transform 0.3s ease, color 0.3s ease;
+            cursor: default;
+            user-select: none;
+        }
+        .cloud-word:hover {
+            transform: scale(1.15) rotate(-2deg);
+            text-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 bg-white antialiased">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-black text-hih-dark mb-2 uppercase tracking-widest">Congresterminologie (Keep it Simple)</h2>
+            <p class="text-hih-gray">De belangrijkste theorieën, methodieken en concepten uit de lezingen en workshops.</p>
+        </div>
+        
+        <div class="cloud-container">
+            <!-- Kernconcepten (Hoogste frequentie / nadruk in de teksten) -->
+            <span class="cloud-word text-7xl font-black text-hih-orange">Gemeenschapsgerichte Zorg</span>
+            <span class="cloud-word text-7xl font-extrabold text-hih-green">Hersteldenken</span>
+            <span class="cloud-word text-6xl font-black text-hih-dark">Ervaringsdeskundigheid</span>
+            <span class="cloud-word text-6xl font-bold text-hih-orange">Eigenaarschap</span>
+            
+            <!-- Belangrijke pijlers en theorieën -->
+            <span class="cloud-word text-5xl font-extrabold text-hih-green">Co-creatie</span>
+            <span class="cloud-word text-5xl font-black text-hih-gray">Psychische Kwetsbaarheid</span>
+            <span class="cloud-word text-5xl font-bold text-hih-dark">Zorgcontinuïteit</span>
+            <span class="cloud-word text-4xl font-extrabold text-hih-orange">Ecosysteem (GEM)</span>
+            <span class="cloud-word text-4xl font-black text-hih-green">Zorgzame Buurt</span>
+            
+            <!-- Methodieken en sleutelwoorden uit de sessies -->
+            <span class="cloud-word text-4xl font-bold text-hih-dark">Verbondenheid</span>
+            <span class="cloud-word text-4xl font-semibold text-hih-gray">Ontmoeting</span>
+            <span class="cloud-word text-3xl font-black text-hih-green">Gelijkwaardigheid</span>
+            <span class="cloud-word text-3xl font-extrabold text-hih-orange">Netwerkzorg</span>
+            <span class="cloud-word text-3xl font-bold text-hih-dark">Outreachend Wijkwerk</span>
+            <span class="cloud-word text-3xl font-medium text-hih-gray">Stigma</span>
+            <span class="cloud-word text-3xl font-bold text-hih-green">Deïnstitutionalisering</span>
+            
+            <!-- Specifieke begrippen uit academische lezingen (Vanheule / Van Os / Waterheuvel) -->
+            <span class="cloud-word text-2xl font-black text-hih-orange">Instituut vs. Instelling</span>
+            <span class="cloud-word text-2xl font-bold text-hih-dark">Demedicalisering</span>
+            <span class="cloud-word text-2xl font-extrabold text-hih-green">Side-by-side</span>
+            <span class="cloud-word text-2xl font-medium text-hih-gray">Participatie</span>
+            <span class="cloud-word text-2xl font-semibold text-hih-orange">Social Prescribing</span>
+            <span class="cloud-word text-xl font-bold text-hih-dark">Beschut Wonen</span>
+            <span class="cloud-word text-xl font-black text-hih-green">Work-Ordered Day</span>
+            <span class="cloud-word text-xl font-medium text-hih-gray">Respijtzorg</span>
+            
+            <!-- Zeer specifieke theorie-termen (kleinere weging) -->
+            <span class="cloud-word text-lg font-bold text-hih-orange">Dubbele Vervreemding</span>
+            <span class="cloud-word text-lg font-semibold text-hih-dark">Pathoplastie</span>
+            <span class="cloud-word text-lg font-extrabold text-hih-green">Overdrachtsconstellatie</span>
+            <span class="cloud-word text-lg font-medium text-hih-gray">Epistemisch Pluralisme</span>
+            <span class="cloud-word text-lg font-bold text-hih-orange">Dodo-verdict</span>
+            <span class="cloud-word text-lg font-semibold text-hih-dark">Ideografische Revolutie</span>
+        </div>
+    </div>
+</body>
+</html>
