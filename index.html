@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Woordenwolk: Conferentietermen HiH 50 Jaar</title>
+    <title>Interactieve Woordenwolk met Referenties</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -28,71 +28,226 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 1.2rem 2rem;
-            padding: 4rem 3rem;
+            gap: 1.5rem 2.5rem;
+            padding: 5rem 3rem;
             background-color: #F5F2EB;
             border-radius: 24px;
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
         }
         .cloud-word {
+            position: relative;
             line-height: 1.1;
-            transition: transform 0.3s ease, color 0.3s ease;
-            cursor: default;
+            transition: transform 0.3s ease;
+            cursor: help;
             user-select: none;
         }
         .cloud-word:hover {
-            transform: scale(1.15) rotate(-2deg);
-            text-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transform: scale(1.1) rotate(-1deg);
+            z-index: 50;
+        }
+        
+        /* Tooltip (Popup) Styling */
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            width: 320px;
+            background-color: white;
+            color: #2C3531;
+            text-align: left;
+            padding: 1.25rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2), 0 8px 10px -6px rgba(0,0,0,0.1);
+            transition: all 0.2s ease-in-out;
+            font-size: 0.95rem;
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            font-weight: normal;
+            line-height: 1.4;
+            pointer-events: none;
+            border: 1px solid #e5e7eb;
+            text-transform: none;
+            letter-spacing: normal;
+            text-shadow: none;
+        }
+        
+        /* Driehoekje onder de tooltip */
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -8px;
+            border-width: 8px;
+            border-style: solid;
+            border-color: white transparent transparent transparent;
+        }
+
+        .cloud-word:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .ref-bron {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #E35220;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
     </style>
 </head>
 <body class="p-4 md:p-8 bg-white antialiased">
-    <div class="max-w-5xl mx-auto">
+    <div class="max-w-6xl mx-auto">
         <div class="text-center mb-8">
-            <h2 class="text-3xl font-black text-hih-dark mb-2 uppercase tracking-widest">Congresterminologie (Keep it Simple)</h2>
-            <p class="text-hih-gray">De belangrijkste theorieën, methodieken en concepten uit de lezingen en workshops.</p>
+            <h2 class="text-3xl font-black text-hih-dark mb-2 uppercase tracking-widest">Congresterminologie (Hover voor Context)</h2>
+            <p class="text-hih-gray">Beweeg over een term om de theorie of referentie uit het congresverslag te lezen.</p>
         </div>
         
         <div class="cloud-container">
-            <!-- Kernconcepten (Hoogste frequentie / nadruk in de teksten) -->
-            <span class="cloud-word text-7xl font-black text-hih-orange">Gemeenschapsgerichte Zorg</span>
-            <span class="cloud-word text-7xl font-extrabold text-hih-green">Hersteldenken</span>
-            <span class="cloud-word text-6xl font-black text-hih-dark">Ervaringsdeskundigheid</span>
-            <span class="cloud-word text-6xl font-bold text-hih-orange">Eigenaarschap</span>
+            <!-- Kernconcepten -->
+            <span class="cloud-word text-6xl font-black text-hih-orange">
+                Gemeenschapsgerichte Zorg
+                <span class="tooltip">Zorg is meer dan diensten verplaatsen naar buiten de ziekenhuismuren. Het betekent een betrouwbaar web bouwen van relaties, plekken en steun rond de persoon (wonen, werk, buurt), waar specialistische zorg op aansluit.<span class="ref-bron">Congresverslag / Panel</span></span>
+            </span>
             
-            <!-- Belangrijke pijlers en theorieën -->
-            <span class="cloud-word text-5xl font-extrabold text-hih-green">Co-creatie</span>
-            <span class="cloud-word text-5xl font-black text-hih-gray">Psychische Kwetsbaarheid</span>
-            <span class="cloud-word text-5xl font-bold text-hih-dark">Zorgcontinuïteit</span>
-            <span class="cloud-word text-4xl font-extrabold text-hih-orange">Ecosysteem (GEM)</span>
-            <span class="cloud-word text-4xl font-black text-hih-green">Zorgzame Buurt</span>
+            <span class="cloud-word text-6xl font-extrabold text-hih-green">
+                Hersteldenken
+                <span class="tooltip">Een onvoorspelbaar leerproces waarbij verbinding en hoop centraal staan. Toegepast op de GGZ: niet alleen hoe de patiënt herstelt, maar ook hoe de zorgorganisatie zelf kan herstellen van angst en controledrang.<span class="ref-bron">Stijn Vanheule / Jim van Os</span></span>
+            </span>
+
+            <span class="cloud-word text-5xl font-black text-hih-dark">
+                Ervaringsdeskundigheid
+                <span class="tooltip">Levende ervaring moet integraal onderdeel zijn van het ontwerp en de uitvoering van diensten, gelijkwaardig aan academische of klinische kennis, zonder statusverschillen.<span class="ref-bron">Catherine Brogan / Panel</span></span>
+            </span>
+
+            <span class="cloud-word text-5xl font-bold text-hih-orange">
+                Eigenaarschap
+                <span class="tooltip">Een ladder van groei: weten wat er speelt → meedenken → meedoen → een gelijke stem hebben → initiatief nemen. Het herwinnen van betekenisvolle rollen en beslissingsrecht.<span class="ref-bron">Workshop De Waterheuvel</span></span>
+            </span>
             
-            <!-- Methodieken en sleutelwoorden uit de sessies -->
-            <span class="cloud-word text-4xl font-bold text-hih-dark">Verbondenheid</span>
-            <span class="cloud-word text-4xl font-semibold text-hih-gray">Ontmoeting</span>
-            <span class="cloud-word text-3xl font-black text-hih-green">Gelijkwaardigheid</span>
-            <span class="cloud-word text-3xl font-extrabold text-hih-orange">Netwerkzorg</span>
-            <span class="cloud-word text-3xl font-bold text-hih-dark">Outreachend Wijkwerk</span>
-            <span class="cloud-word text-3xl font-medium text-hih-gray">Stigma</span>
-            <span class="cloud-word text-3xl font-bold text-hih-green">Deïnstitutionalisering</span>
+            <!-- Belangrijke pijlers -->
+            <span class="cloud-word text-4xl font-extrabold text-hih-green">
+                Co-creatie
+                <span class="tooltip">Zorgvoorzieningen niet vóór mensen met een kwetsbaarheid bouwen, maar mét hen. Patiënten treden op als gelijkwaardige partners in het beleid en de dagelijkse werking.<span class="ref-bron">Catherine Brogan & Michael Ryan</span></span>
+            </span>
+
+            <span class="cloud-word text-4xl font-black text-hih-gray">
+                Psychische Kwetsbaarheid
+                <span class="tooltip">Vaak een existentiële of systemische reactie op een complexe context (stress, armoede, eenzaamheid), niet louter een 'kapot stukje in de hersenen' of een geïsoleerd medisch defect.<span class="ref-bron">Stijn Vanheule / Jim van Os</span></span>
+            </span>
+
+            <span class="cloud-word text-4xl font-bold text-hih-dark">
+                Zorgcontinuïteit
+                <span class="tooltip">In de eerste plaats een relationeel gegeven. Geen estafette van dossiers, maar een stabiele 'constellatie' van relaties en steun die behouden blijft wanneer iemand tussen zorgvormen schakelt.<span class="ref-bron">Stijn Vanheule / Panel</span></span>
+            </span>
+
+            <span class="cloud-word text-4xl font-extrabold text-hih-orange">
+                Ecosysteem (GEM)
+                <span class="tooltip">Ecosysteem Mentale Gezondheid: de sociale basis (buurt, herstelacademies, ervaringsdeskundigen) vormt de kern, met gespecialiseerde zorg in een ondersteunende en consulterende rol.<span class="ref-bron">Jim van Os</span></span>
+            </span>
             
-            <!-- Specifieke begrippen uit academische lezingen (Vanheule / Van Os / Waterheuvel) -->
-            <span class="cloud-word text-2xl font-black text-hih-orange">Instituut vs. Instelling</span>
-            <span class="cloud-word text-2xl font-bold text-hih-dark">Demedicalisering</span>
-            <span class="cloud-word text-2xl font-extrabold text-hih-green">Side-by-side</span>
-            <span class="cloud-word text-2xl font-medium text-hih-gray">Participatie</span>
-            <span class="cloud-word text-2xl font-semibold text-hih-orange">Social Prescribing</span>
-            <span class="cloud-word text-xl font-bold text-hih-dark">Beschut Wonen</span>
-            <span class="cloud-word text-xl font-black text-hih-green">Work-Ordered Day</span>
-            <span class="cloud-word text-xl font-medium text-hih-gray">Respijtzorg</span>
+            <span class="cloud-word text-4xl font-black text-hih-green">
+                Zorgzame Buurt
+                <span class="tooltip">Steunt op 3 pijlers: het 'kleine helpen' via ontmoetingsplekken, het creëren van informele en formele voelsprieten, en het doorbreken van de eilandjes van lokale professionals.<span class="ref-bron">ToekomstZorg Kader</span></span>
+            </span>
+
+            <!-- Methodieken -->
+            <span class="cloud-word text-3xl font-bold text-hih-dark">
+                Verbondenheid
+                <span class="tooltip">De simpele menselijke nood. Systemen worden complexer, terwijl mensen eigenlijk nood hebben aan iets eenvoudigers: nabijheid en een volwaardige plaats in de samenleving.<span class="ref-bron">Rik van Nuffel (Situering)</span></span>
+            </span>
+
+            <span class="cloud-word text-3xl font-semibold text-hih-gray">
+                Ontmoeting
+                <span class="tooltip">Het creëren van veilige ruimtes zonder klinisch oordeel, waar de grenzen tussen waanzin en normaliteit vervagen, en waar de hulpverlener opnieuw mens durft te zijn.<span class="ref-bron">Chaos VZW / De Moester</span></span>
+            </span>
+
+            <span class="cloud-word text-3xl font-black text-hih-green">
+                Gelijkwaardigheid
+                <span class="tooltip">De stem van een lid of patiënt heeft net zoveel waarde en beslissingsrecht als die van de staf of de directeur. Cruciaal in het tegengaan van hiërarchische machtsverhoudingen.<span class="ref-bron">De Waterheuvel / Stijn Vanheule</span></span>
+            </span>
+
+            <span class="cloud-word text-3xl font-extrabold text-hih-orange">
+                Netwerkzorg
+                <span class="tooltip">De erkenning dat één hulpverlener complexe problemen niet alleen kan oplossen. Formele zorg en informele buurtnetwerken moeten fysiek en outreachend samenwerken.<span class="ref-bron">Wim Haeck, Steven Gillis & Cis Dewaele</span></span>
+            </span>
+
+            <span class="cloud-word text-3xl font-bold text-hih-dark">
+                Outreachend Wijkwerk
+                <span class="tooltip">Mensen actief opzoeken in hun leefwereld in plaats van te wachten in de kliniek. Vanuit de leefwereld van de bewoner bruggen bouwen met buurt en professionele zorg.<span class="ref-bron">Gentse Trio (Wim, Steven, Cis)</span></span>
+            </span>
+
+            <span class="cloud-word text-3xl font-bold text-hih-green">
+                Deïnstitutionalisering
+                <span class="tooltip">De verschuiving weg van gesloten ziekenhuizen. Let op: het mag niet leiden tot onondersteund ontslag waarbij mensen woning of sociaal netwerk verliezen.<span class="ref-bron">Panel / Katri Sova</span></span>
+            </span>
             
-            <!-- Zeer specifieke theorie-termen (kleinere weging) -->
-            <span class="cloud-word text-lg font-bold text-hih-orange">Dubbele Vervreemding</span>
-            <span class="cloud-word text-lg font-semibold text-hih-dark">Pathoplastie</span>
-            <span class="cloud-word text-lg font-extrabold text-hih-green">Overdrachtsconstellatie</span>
-            <span class="cloud-word text-lg font-medium text-hih-gray">Epistemisch Pluralisme</span>
-            <span class="cloud-word text-lg font-bold text-hih-orange">Dodo-verdict</span>
-            <span class="cloud-word text-lg font-semibold text-hih-dark">Ideografische Revolutie</span>
+            <!-- Academische & Theoretische termen -->
+            <span class="cloud-word text-2xl font-black text-hih-orange">
+                Instituut vs. Instelling
+                <span class="tooltip">Het instituut zijn de muren, protocollen en hiërarchie. De instelling is de menselijke ontmoeting daarbinnen. Het instituut mag de instelling niet verstikken.<span class="ref-bron">Stijn Vanheule (via Oury)</span></span>
+            </span>
+
+            <span class="cloud-word text-2xl font-bold text-hih-dark">
+                Demedicalisering
+                <span class="tooltip">Erkennen dat veel psychisch lijden niet per se een medische hersenstoornis is, maar voortkomt uit sociale of spirituele crisissituaties.<span class="ref-bron">Jim van Os</span></span>
+            </span>
+
+            <span class="cloud-word text-2xl font-extrabold text-hih-green">
+                Side-by-side
+                <span class="tooltip">Het operationele fundament van het Clubhouse-model. Leden en medewerkers werken schouder aan schouder de dagelijkse taken af zonder de klassieke therapeut-patiënt hiërarchie.<span class="ref-bron">Clubhouse Model</span></span>
+            </span>
+
+            <span class="cloud-word text-2xl font-semibold text-hih-orange">
+                Social Prescribing
+                <span class="tooltip">Internationaal (UK) voorbeeld van publieke geestelijke gezondheid, waarbij een arts geen pillen voorschrijft, maar deelname aan sociale activiteiten ter bestrijding van eenzaamheid of schulden.<span class="ref-bron">Jim van Os</span></span>
+            </span>
+            
+            <span class="cloud-word text-xl font-black text-hih-green">
+                Work-Ordered Day
+                <span class="tooltip">Een gestructureerde dagindeling waarbij de zingeving en het ritme voortkomen uit reëel, noodzakelijk werk voor de organisatie (koken, administratie, tuin), in plaats van passieve therapie.<span class="ref-bron">De Waterheuvel / AMA</span></span>
+            </span>
+
+            <span class="cloud-word text-xl font-medium text-hih-gray">
+                Respijtzorg
+                <span class="tooltip">Een tijdelijke landingsplek ('spijtplek') om op adem te komen na bijvoorbeeld een burn-out of jobverlies, om zo de druk weg te nemen vóór medische escalatie nodig is.<span class="ref-bron">De Moester / Rik Van Nuffel</span></span>
+            </span>
+            
+            <span class="cloud-word text-xl font-bold text-hih-orange">
+                Dubbele Vervreemding
+                <span class="tooltip">Naast de vervreemding door de psychische aandoening, legt de klinische instelling vaak een tweede vervreemding op door kille routines en afstandelijke reglementen.<span class="ref-bron">Stijn Vanheule (via Tosquelles)</span></span>
+            </span>
+
+            <span class="cloud-word text-xl font-semibold text-hih-dark">
+                Pathoplastie
+                <span class="tooltip">De paradoxale neiging van een instelling om zélf pathologie te veroorzaken. De kille manier waarop logistiek, opnames en isolatie gebeuren kan onbedoeld traumatiserend werken.<span class="ref-bron">Stijn Vanheule</span></span>
+            </span>
+
+            <span class="cloud-word text-xl font-extrabold text-hih-green">
+                Overdrachtsconstellatie
+                <span class="tooltip">Zorgrelaties zijn niet exclusief één-op-één, maar verspreid over verschillende begeleiders, mede-leden en zelfs ruimtes of objecten binnen het netwerk.<span class="ref-bron">Stijn Vanheule (via Oury)</span></span>
+            </span>
+
+            <span class="cloud-word text-xl font-medium text-hih-gray">
+                Epistemisch Pluralisme
+                <span class="tooltip">De academische erkenning dat ervaringskennis (lived experience) precies evenveel wetenschappelijke en beleidsmatige geldigheid heeft als klinische en academische kennis.<span class="ref-bron">Jim van Os</span></span>
+            </span>
+
+            <span class="cloud-word text-xl font-bold text-hih-orange">
+                Dodo-verdict
+                <span class="tooltip">Uit onderzoek blijkt dat vrijwel alle psychotherapieën een beetje werken. De motor van herstel is de menselijke relatie, niet de specifieke theorie of techniek.<span class="ref-bron">Jim van Os</span></span>
+            </span>
+
+            <span class="cloud-word text-xl font-semibold text-hih-dark">
+                Ideografische Revolutie
+                <span class="tooltip">De overtuiging dat psychisch lijden bij iedere persoon absoluut uniek is. De juiste insteek is niet 'welke diagnose heb je', maar 'wie ben je en wat is er gebeurd?'.<span class="ref-bron">Jim van Os (via Steven Hayes)</span></span>
+            </span>
         </div>
     </div>
 </body>
